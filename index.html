@@ -57,7 +57,7 @@
         mensaje: document.getElementById('mensaje').value,
       };
       try {
-        const response = await fetch('https://tu-api-render.onrender.com/enviar', {
+        const response = await fetch('https://tanto-contact-backend.onrender.com/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(data)
