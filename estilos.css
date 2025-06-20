@@ -17,17 +17,7 @@ body {
       display: none;
       margin-top: 1rem;
     }
-    .logo {
-      display: block;
-      margin: 0 auto;
-      max-width: 100%;
-      height: auto;
-      margin-bottom: 2rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-      height: 300px;
-      width: 500px;
-    }
+    
    
     .form-group {
       margin-bottom: 1.5rem;
@@ -43,15 +33,4 @@ body {
       background-color: #0069d9;
       border-color: #0062cc;
     }
-    .texto {
-      text-align: center;
-      color: white;
-      font-size: 2.5rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      font-family: 'Arial', sans-serif;
-      font-weight: bold;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-      margin-bottom: 4rem;
-    }
+  
