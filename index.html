@@ -10,7 +10,7 @@
 </head>
 <body>
 
-  <div class="form-container text-center">
+  <div class="form-container text-center position-relative">
 
     <!-- LOGO -->
     <img src="Imagenes/Logo con fondo transparente.png" alt="Tanto Digital" class="logo mb-3">
@@ -35,19 +35,28 @@
         <textarea class="form-control" id="mensaje" rows="5" required></textarea>
       </div>
 
-      <!-- Botón y Loader -->
-      <div class="d-flex align-items-center justify-content-center gap-3">
-        <button type="submit" class="btn btn-dark w-50">Enviar</button>
-        <div id="loader" class="loader d-none"></div>
-      </div>
+      <button type="submit" class="btn btn-dark w-100">Enviar</button>
     </form>
 
-    <!-- Mensaje de éxito -->
-    <div id="successMessage" class="alert alert-success success-message text-center">
-      ¡Mensaje enviado con éxito!
+    <!-- LOADER CENTRAL -->
+    <div id="loaderOverlay" class="loader-overlay d-none">
+      <div class="loader"></div>
+    </div>
+
+  </div>
+
+  <!-- MODAL DE ÉXITO -->
+  <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content text-center">
+        <div class="modal-body">
+          <h5 class="modal-title" id="successModalLabel">¡Mensaje enviado con éxito!</h5>
+        </div>
+      </div>
     </div>
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
   <script src="script.js"></script>
 </body>
 </html>

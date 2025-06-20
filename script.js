@@ -1,19 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Despertar el backend apenas carga la página
   fetch('https://tanto-contact-backend.onrender.com/')
     .then(() => console.log('Backend despierto'))
     .catch(err => console.warn('No se pudo despertar el backend:', err));
 
   const form = document.getElementById('contactForm');
-  const successMsg = document.getElementById('successMessage');
-  const loader = document.getElementById('loader');
+  const loaderOverlay = document.getElementById('loaderOverlay');
   const submitBtn = form.querySelector('button[type="submit"]');
+  const successModal = new bootstrap.Modal(document.getElementById('successModal'));
 
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    // Mostrar loader
-    loader.classList.remove('d-none');
+    loaderOverlay.classList.remove('d-none');
     submitBtn.disabled = true;
     submitBtn.textContent = 'Enviando...';
 
@@ -34,7 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (result.status === 'success') {
         form.reset();
-        successMsg.style.display = 'block';
+        successModal.show();
+
+        setTimeout(() => {
+          successModal.hide();
+        }, 3500);
       } else {
         alert('Hubo un error al enviar tu mensaje.');
       }
@@ -42,8 +44,7 @@ document.addEventListener('DOMContentLoaded', () => {
       alert('Error de conexión con el servidor.');
       console.error(err);
     } finally {
-      // Ocultar loader y resetear botón
-      loader.classList.add('d-none');
+      loaderOverlay.classList.add('d-none');
       submitBtn.disabled = false;
       submitBtn.textContent = 'Enviar';
     }
