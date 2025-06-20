@@ -10,8 +10,7 @@
 </head>
 <body>
 
-  <div class="form-container text-center">
-
+  <div class="text-center">
     <!-- LOGO -->
     <img src="Imagenes/Logo con fondo transparente.png" alt="Tanto Digital" class="logo mb-3" />
 
@@ -19,7 +18,7 @@
     <p class="construction-text">Sitio en construcción</p>
 
     <!-- Botón para abrir el formulario -->
-    <button class="btn btn-primary" id="openContactBtn" data-bs-toggle="modal" data-bs-target="#contactModal">
+    <button class="shadow__btn" id="openContactBtn" data-bs-toggle="modal" data-bs-target="#contactModal">
       Tocá acá para hablar con nosotros
     </button>
   </div>
@@ -28,25 +27,25 @@
   <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content position-relative">
-        <div class="modal-header">
+        <div class="modal-header border-0">
           <h5 class="modal-title" id="contactModalLabel">Contacto</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
         </div>
         <div class="modal-body">
           <form id="contactForm">
             <div class="mb-3">
               <label for="nombre" class="form-label">Nombre</label>
-              <input type="text" class="form-control" id="nombre" required />
+              <input type="text" class="form-control glow-input" id="nombre" required />
             </div>
             <div class="mb-3">
               <label for="email" class="form-label">Correo electrónico</label>
-              <input type="email" class="form-control" id="email" required />
+              <input type="email" class="form-control glow-input" id="email" required />
             </div>
             <div class="mb-3">
               <label for="mensaje" class="form-label">Mensaje</label>
-              <textarea class="form-control" id="mensaje" rows="5" required></textarea>
+              <textarea class="form-control glow-input" id="mensaje" rows="5" required></textarea>
             </div>
-            <button type="submit" class="btn btn-dark w-100">Enviar</button>
+            <button type="submit" class="shadow__btn-submit">Enviar</button>
           </form>
 
           <!-- Loader -->

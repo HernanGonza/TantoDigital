@@ -4,26 +4,88 @@ body {
   background-size: cover;
   background-position: center;
   padding: 2rem;
-}
-
-.form-container {
-  max-width: 600px;
-  margin: auto;
-  background-color: #fff;
-  padding: 2rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+  color: white;
 }
 
 .logo {
-  width: 100px;
+  width: 700px;
   height: auto;
 }
 
 .construction-text {
-  font-size: 1.1rem;
-  color: #555;
+  font-size: 1.2rem;
+  color: #ddd;
   margin-bottom: 1.5rem;
+}
+
+/* Botón "Habla con nosotros" */
+.shadow__btn {
+  padding: 10px 20px;
+  border: none;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 7px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.5s;
+  transition-property: box-shadow;
+  background: rgb(0,140,255);
+  box-shadow: 0 0 25px rgb(0,140,255);
+}
+
+.shadow__btn:hover {
+  box-shadow: 0 0 5px rgb(0,140,255),
+              0 0 25px rgb(0,140,255),
+              0 0 50px rgb(0,140,255),
+              0 0 100px rgb(0,140,255);
+}
+
+/* Estilos para el modal */
+.modal-content {
+  background-color: #000c33;
+  color: #fff;
+  box-shadow: 0 0 30px rgba(0, 140, 255, 0.6);
+  border: none;
+}
+
+/* Entradas de texto con glow */
+.glow-input {
+  background-color: #000d3a;
+  color: #fff;
+  border: 1px solid rgb(0,140,255);
+  box-shadow: 0 0 10px rgba(0,140,255, 0.5);
+}
+
+.glow-input:focus {
+  background-color: #000f45;
+  border-color: rgb(0,140,255);
+  box-shadow: 0 0 15px rgb(0,140,255);
+}
+
+/* Botón de enviar con estilo glow */
+.shadow__btn-submit {
+  padding: 10px 20px;
+  border: none;
+  font-size: 17px;
+  color: #fff;
+  border-radius: 7px;
+  letter-spacing: 4px;
+  font-weight: 700;
+  text-transform: uppercase;
+  transition: 0.5s;
+  transition-property: box-shadow;
+  background: rgb(0,140,255);
+  box-shadow: 0 0 25px rgb(0,140,255);
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.shadow__btn-submit:hover {
+  box-shadow: 0 0 5px rgb(0,140,255),
+              0 0 25px rgb(0,140,255),
+              0 0 50px rgb(0,140,255),
+              0 0 100px rgb(0,140,255);
 }
 
 /* LOADER OVERLAY */
@@ -33,7 +95,7 @@ body {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255,255,255,0.7);
+  background: rgba(0, 12, 51, 0.85);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -53,7 +115,7 @@ body {
   position: absolute;
   inset: 0;
   border-radius: 50%;
-  background: #000;
+  background: #fff;
 }
 .loader::before {
   box-shadow: 26px 0;
