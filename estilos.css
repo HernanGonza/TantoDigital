@@ -55,12 +55,20 @@ body {
   color: #fff;
   border: 1px solid rgb(0,140,255);
   box-shadow: 0 0 10px rgba(0,140,255, 0.5);
+  /* Nuevo para texto blanco siempre */
+  color: white !important;
 }
 
 .glow-input:focus {
   background-color: #000f45;
   border-color: rgb(0,140,255);
   box-shadow: 0 0 15px rgb(0,140,255);
+  color: white !important;
+}
+
+/* Placeholder gris claro */
+.glow-input::placeholder {
+  color: #ccc;
 }
 
 /* Botón de enviar con estilo glow */
