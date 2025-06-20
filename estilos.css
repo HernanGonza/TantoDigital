@@ -1,36 +1,67 @@
 body {
-      background-color: #160a4e;
-      background-image: url(Imagenes/Fondo.png);
-      background-size: cover;
-      background-position: center;
-      padding: 2rem;
-    }
-    .form-container {
-      max-width: 600px;
-      margin: auto;
-      background-color: #fff;
-      padding: 2rem;
-      border-radius: 0.75rem;
-      box-shadow: 0 0 20px rgba(0,0,0,0.1);
-    }
-    .success-message {
-      display: none;
-      margin-top: 1rem;
-    }
-    
-   
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    .form-label {
-      font-weight: bold;
-    }
-    .btn-primary {
-      background-color: #007bff;
-      border-color: #007bff;
-    }
-    .btn-primary:hover {
-      background-color: #0069d9;
-      border-color: #0062cc;
-    }
-  
+  background-color: #160a4e;
+  background-image: url(Imagenes/Fondo.png);
+  background-size: cover;
+  background-position: center;
+  padding: 2rem;
+}
+
+.form-container {
+  max-width: 600px;
+  margin: auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 0.75rem;
+  box-shadow: 0 0 20px rgba(0,0,0,0.1);
+}
+
+.success-message {
+  display: none;
+  margin-top: 1rem;
+}
+
+.logo {
+  width: 100px;
+  height: auto;
+}
+
+.construction-text {
+  font-size: 1.1rem;
+  color: #555;
+  margin-bottom: 1.5rem;
+}
+
+/* Loader */
+.loader {
+  width: 15px;
+  aspect-ratio: 1;
+  position: relative;
+  animation: l9-0 1.5s infinite steps(2);
+}
+.loader::before,
+.loader::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: #000;
+}
+.loader::before {
+  box-shadow: 26px 0;
+  transform: translateX(-26px);
+  animation: l9-1 .75s infinite linear alternate;
+}
+.loader::after {
+  transform: translateX(13px) rotate(0deg) translateX(13px);
+  animation: l9-2 .75s infinite linear alternate;
+}
+@keyframes l9-0 {
+  0%, 49.9% { transform: scale(1); }
+  50%, 100% { transform: scale(-1); }
+}
+@keyframes l9-1 {
+  100% { box-shadow: 52px 0; }
+}
+@keyframes l9-2 {
+  100% { transform: translateX(13px) rotate(-180deg) translateX(13px); }
+}
