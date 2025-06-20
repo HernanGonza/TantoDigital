@@ -10,39 +10,52 @@
 </head>
 <body>
 
-  <div class="form-container text-center position-relative">
+  <div class="form-container text-center">
 
     <!-- LOGO -->
-    <img src="Imagenes/Logo con fondo transparente.png" alt="Tanto Digital" class="logo mb-3">
+    <img src="Imagenes/Logo con fondo transparente.png" alt="Tanto Digital" class="logo mb-3" />
 
     <!-- Texto de construcción -->
     <p class="construction-text">Sitio en construcción</p>
 
-    <h2 class="text-center mb-4">Contacto</h2>
+    <!-- Botón para abrir el formulario -->
+    <button class="btn btn-primary" id="openContactBtn" data-bs-toggle="modal" data-bs-target="#contactModal">
+      Tocá acá para hablar con nosotros
+    </button>
+  </div>
 
-    <!-- FORMULARIO -->
-    <form id="contactForm">
-      <div class="mb-3 text-start">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" required />
-      </div>
-      <div class="mb-3 text-start">
-        <label for="email" class="form-label">Correo electrónico</label>
-        <input type="email" class="form-control" id="email" required />
-      </div>
-      <div class="mb-3 text-start">
-        <label for="mensaje" class="form-label">Mensaje</label>
-        <textarea class="form-control" id="mensaje" rows="5" required></textarea>
-      </div>
+  <!-- MODAL FORMULARIO -->
+  <div class="modal fade" id="contactModal" tabindex="-1" aria-labelledby="contactModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content position-relative">
+        <div class="modal-header">
+          <h5 class="modal-title" id="contactModalLabel">Contacto</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+        </div>
+        <div class="modal-body">
+          <form id="contactForm">
+            <div class="mb-3">
+              <label for="nombre" class="form-label">Nombre</label>
+              <input type="text" class="form-control" id="nombre" required />
+            </div>
+            <div class="mb-3">
+              <label for="email" class="form-label">Correo electrónico</label>
+              <input type="email" class="form-control" id="email" required />
+            </div>
+            <div class="mb-3">
+              <label for="mensaje" class="form-label">Mensaje</label>
+              <textarea class="form-control" id="mensaje" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-dark w-100">Enviar</button>
+          </form>
 
-      <button type="submit" class="btn btn-dark w-100">Enviar</button>
-    </form>
-
-    <!-- LOADER CENTRAL -->
-    <div id="loaderOverlay" class="loader-overlay d-none">
-      <div class="loader"></div>
+          <!-- Loader -->
+          <div id="loaderOverlay" class="loader-overlay d-none">
+            <div class="loader"></div>
+          </div>
+        </div>
+      </div>
     </div>
-
   </div>
 
   <!-- MODAL DE ÉXITO -->
