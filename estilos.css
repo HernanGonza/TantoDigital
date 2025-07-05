@@ -1,8 +1,7 @@
 body {
   background-color: #160a4e;
-  background-image: url(Imagenes/Fondo.png);
+  background-image: url("Recuros graficos/TD_Trama.jpg");
   background-size: cover;
-  background-position: center;
   padding: 2rem;
   color: white;
 }
@@ -18,7 +17,7 @@ body {
 }
 
 .construction-text {
-  font-size: 1.2rem;
+  font-size: 1.8rem;
   color: #ddd;
   margin-bottom: 1.5rem;
   text-align: center;
