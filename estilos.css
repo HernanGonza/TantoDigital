@@ -14,6 +14,8 @@ body {
   display: block;
   margin-left: auto;
   margin-right: auto;
+  padding-bottom: 50px;
+  padding-top: 100px;
 }
 
 .construction-text {
@@ -21,6 +23,7 @@ body {
   color: #ddd;
   margin-bottom: 1.5rem;
   text-align: center;
+  padding-bottom: 100px;
 }
 
 /* Botón "Habla con nosotros" */
