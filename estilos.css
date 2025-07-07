@@ -228,17 +228,15 @@ body {
   width: 180px;
   height: 220px;
   background-color: #000c33;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
+  /* Eliminamos justify-content y align-items para el contenedor principal */
   padding: 14px;
-  gap: 8px;
   border-radius: 10px;
   cursor: pointer;
   text-align: center;
   color: #fff;
   font-family: "Arial", sans-serif;
   transition: all 0.3s ease-in-out;
+  /* NO poner overflow: hidden; aquí si queremos que los pseudo-elementos se muestren fuera */
 }
 
 .card-custom::before {
@@ -293,7 +291,63 @@ body {
   color: #41c0f0;
 }
 
-/* Responsivo para pantallas chicas */
+/*
+* ESTILOS PARA LAS TARJETAS (ICONO Y TEXTO)
+*/
+
+/* Contenedor del icono */
+.icon-wrapper {
+  position: absolute; /* Posicionamiento absoluto para superponer */
+  top: 50%; /* Centrar verticalmente */
+  left: 50%; /* Centrar horizontalmente */
+  transform: translate(-50%, -50%); /* Ajustar para centrado exacto */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%; /* Ocupa todo el ancho disponible */
+  height: 100%; /* Ocupa toda la altura disponible */
+  transition: opacity 0.4s ease, transform 0.4s ease; /* Transición para la animación */
+  z-index: 2; /* Aseguramos que esté por encima del texto */
+  pointer-events: none; /* Asegura que el clic en la tarjeta pase a los elementos debajo si no está el ícono */
+}
+
+.icon-wrapper img {
+  width: 80px; /* Tamaño más grande para el icono */
+  height: 80px;
+  object-fit: contain;
+  filter: brightness(0) saturate(100%) invert(73%) sepia(72%) saturate(374%)
+    hue-rotate(169deg) brightness(95%) contrast(92%); /* Mantenemos el color azulado */
+}
+
+/* Texto de la tarjeta */
+.card-text {
+  position: absolute; /* Posicionamiento absoluto para superponer */
+  top: 50%; /* Centrar verticalmente */
+  left: 50%; /* Centrar horizontalmente */
+  transform: translate(-50%, -50%); /* Ajustar para centrado exacto */
+  opacity: 0; /* Oculto por defecto */
+  transition: opacity 0.4s ease, transform 0.4s ease; /* Transición para la animación */
+  z-index: 1; /* Aseguramos que esté por debajo del icono */
+  padding: 10px; /* Añadir padding para que el texto no toque los bordes */
+  width: 100%; /* Ocupa todo el ancho */
+  display: flex; /* Para centrar el contenido del texto */
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Al hacer hover en la tarjeta, oculta el icono y muestra el texto */
+.card-custom:hover .icon-wrapper {
+  opacity: 0; /* Desvanece el icono */
+  transform: translate(-50%, -50%) scale(0.8); /* Pequeña escala para el efecto de desaparición */
+}
+
+.card-custom:hover .card-text {
+  opacity: 1; /* Muestra el texto */
+  transform: translate(-50%, -50%) scale(1); /* Asegura que el texto esté a escala normal */
+}
+
+/* MEDIA QUERY para pantallas chicas */
 @media (max-width: 768px) {
   .card-row {
     flex-direction: column;
@@ -304,91 +358,53 @@ body {
   .card-custom {
     width: 90%;
     max-width: 280px;
-    /* Fijamos una altura específica para móvil para evitar el ruido */
-    height: 180px; /* Ajusta esta altura según sea necesario */
-    display: flex;
-    flex-direction: column;
-    justify-content: center; /* Centra el contenido verticalmente */
-    align-items: center; /* Centra el contenido horizontalmente */
-    padding: 10px; /* Ajusta el padding si es necesario */
+    height: 180px;
+    /* En móvil, el ícono y el texto siempre deben ser visibles y bien posicionados */
+    /* Eliminamos display: flex, justify-content, align-items, padding aquí para evitar conflictos */
   }
 
   /* Desactivar el hover del ::before en móvil */
   .card-custom:hover::before {
-    transform: none; /* Elimina la transformación que causa el cambio de tamaño */
+    transform: none;
   }
 
-  /* Icono visible siempre en móvil, centrado */
+  /* En móvil, el ícono siempre visible y centrado */
   .icon-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%; /* Ocupa todo el ancho disponible */
-    height: 48px; /* Altura fija para el contenedor del ícono */
+    position: relative; /* Vuelve a posicionamiento relativo en móvil */
+    top: auto;
+    left: auto;
+    transform: none; /* Elimina la transformación de centrado absoluto */
+    opacity: 1; /* Siempre visible */
     margin-bottom: 5px; /* Espacio entre ícono y texto */
+    pointer-events: auto; /* Permite interacciones en móvil */
+    height: auto; /* Altura automática para el contenido */
   }
 
-  /* Aseguramos que la imagen del icono no exceda su contenedor */
   .icon-wrapper img {
-    width: 40px; /* Ajusta el tamaño del ícono si es necesario */
-    height: 40px;
-    object-fit: contain;
+    width: 50px; /* Ajusta el tamaño del ícono en móvil si es necesario */
+    height: 50px;
   }
 
-  /* Texto visible siempre en móvil, centrado */
+  /* En móvil, el texto siempre visible y centrado */
   .card-text {
-    opacity: 1; /* Hace el texto visible */
-    transform: translateY(0); /* Resetea cualquier transformación */
-    pointer-events: auto; /* Permite interacciones con el texto */
+    position: relative; /* Vuelve a posicionamiento relativo en móvil */
+    top: auto;
+    left: auto;
+    transform: none; /* Elimina la transformación de centrado absoluto */
+    opacity: 1; /* Siempre visible */
+    pointer-events: auto;
     text-align: center;
-    flex-grow: 1; /* Permite que el texto ocupe el espacio restante */
-    display: flex; /* Añadimos flex para alinear el texto interno */
-    flex-direction: column;
-    justify-content: center; /* Centra el texto verticalmente */
+    padding: 0; /* Elimina padding adicional si no es necesario */
+    width: auto; /* Ancho automático para el contenido */
+    display: block; /* Vuelve a block para un flujo normal del texto */
   }
 
-  /* Eliminamos cualquier comportamiento de hover que oculte/muestre elementos */
+  /* Eliminar efectos de hover para ícono y texto en móvil */
   .card-custom:hover .icon-wrapper,
   .card-custom:hover .card-text {
-    display: flex; /* Asegura que ambos sigan visibles */
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
-}
-
-/* Icono centrado y visible siempre */
-.icon-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.icon-wrapper img {
-  width: 48px;
-  height: 48px;
-  filter: none; /* Quitamos sombra */
-  opacity: 1;
-}
-
-/* Texto oculto por defecto */
-.card-text {
-  opacity: 0;
-  transform: translateY(10px);
-  transition: all 0.4s ease;
-  pointer-events: none;
-}
-
-/* Al hacer hover, oculta el ícono y muestra el texto */
-/* Estas reglas SÓLO aplican para la versión de escritorio */
-.card-custom:hover .icon-wrapper {
-  display: none;
-}
-
-.card-custom:hover .card-text {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
 }
 
 /* Barra lateral de redes sociales */
