@@ -1,6 +1,6 @@
 body {
   background-color: #160a4e;
-  background-image: url("Recuros graficos/TD_Trama.jpg");
+  background-image: url("Recuros_graficos/TD_Trama.jpg");
   background-size: cover;
   padding: 2rem;
   color: white;
@@ -9,44 +9,75 @@ body {
 /* LOGO responsive centrado */
 .logo {
   max-width: 90vw;
-  width: 65%;
+  width: 45%;
   height: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 50px;
-  padding-top: 100px;
+  padding-bottom: 30px;
+  padding-top: 10px;
 }
 
 .construction-text {
   font-size: 1.8rem;
   color: #ddd;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
   text-align: center;
-  padding-bottom: 100px;
+  padding-bottom: 10px;
 }
 
 /* Botón "Habla con nosotros" */
-.shadow__btn {
-  padding: 10px 20px;
+.button {
+  margin: 0;
+  height: auto;
+  background: transparent;
+  padding: 0;
   border: none;
-  font-size: 17px;
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.5rem;
   color: #fff;
-  border-radius: 7px;
-  letter-spacing: 4px;
-  font-weight: 700;
+  font-weight: bold;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  transition: 0.5s;
-  transition-property: box-shadow;
-  background: rgb(0,140,255);
-  box-shadow: 0 0 25px rgb(0,140,255);
+  transition: color 0.3s ease;
+  cursor: pointer;
 }
 
-.shadow__btn:hover {
-  box-shadow: 0 0 5px rgb(0,140,255),
-              0 0 25px rgb(0,140,255),
-              0 0 50px rgb(0,140,255),
-              0 0 100px rgb(0,140,255);
+/* button styling */
+.button {
+  --border-right: 6px;
+  --text-stroke-color: rgba(255,255,255,0.6);
+  --animation-color: #41c0f0;
+  --fs-size: 2em;
+  letter-spacing: 3px;
+  text-decoration: none;
+  font-size: var(--fs-size);
+  font-family: "Archivo Black", sans-serif;
+  position: relative;
+  text-transform: uppercase;
+  color: #41c0f0;
+  -webkit-text-stroke: 1px var(--text-stroke-color);
+}
+/* this is the text, when you hover on button */
+.hover-text {
+  position: absolute;
+  box-sizing: border-box;
+  content: attr(data-text);
+  color: var(--animation-color);
+  width: 0%;
+  inset: 0;
+  border-right: var(--border-right) solid var(--animation-color);
+  overflow: hidden;
+  transition: 0.5s;
+  -webkit-text-stroke: 1px var(--animation-color);
+}
+/* hover */
+.button:hover .hover-text {
+  width: 100%;
+  filter: drop-shadow(0 0 23px var(--animation-color))
 }
 
 /* Estilos para el modal */
@@ -171,4 +202,133 @@ body {
   .logo {
     max-width: 100%;
   }
+}
+
+/* Contenedor de tarjetas en fila */
+.card-row {
+  display: flex;
+  justify-content: center;
+  gap: 5rem; /* más separación */
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+/* Tarjeta individual */
+.card-custom {
+  position: relative;
+  width: 180px;
+  height: 220px;
+  background-color: #000c33;
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  padding: 14px;
+  gap: 8px;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: center;
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  transition: all 0.3s ease-in-out;
+}
+
+.card-custom::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  left: -4px;
+  top: -4px;
+  margin: auto;
+  width: 188px;
+  height: 228px;
+  border-radius: 12px;
+  background: linear-gradient(-45deg, #41c0f0 0%, #41c0f0 100%);
+  z-index: -10;
+  pointer-events: none;
+  transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.card-custom::after {
+  content: "";
+  z-index: -1;
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(-45deg, #41c0f0 0%, #41c0f0 100%);
+  transform: scale(0.95);
+  filter: blur(18px);
+  border-radius: 12px;
+}
+
+.card-custom:hover::after {
+  filter: blur(25px);
+}
+
+.card-custom:hover::before {
+  transform: rotate(-90deg) scaleX(1.2) scaleY(0.8);
+}
+
+/* Texto dentro de la tarjeta */
+.card-custom .heading {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #41c0f0;
+}
+
+.card-custom p:not(.heading) {
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.card-custom p:last-child {
+  font-weight: 600;
+  color: #41c0f0;
+}
+
+/* Responsivo para pantallas chicas */
+@media (max-width: 768px) {
+  .card-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .card-custom {
+    width: 90%;
+    max-width: 280px;
+    height: auto;
+  }
+}
+/* Icono centrado y visible siempre */
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.icon-wrapper img {
+  width: 48px;
+  height: 48px;
+  filter: none; /* Quitamos sombra */
+  opacity: 1;
+}
+
+/* Texto oculto por defecto */
+.card-text {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+  pointer-events: none;
+}
+
+/* Al hacer hover, oculta el ícono y muestra el texto */
+.card-custom:hover .icon-wrapper {
+  display: none;
+}
+
+.card-custom:hover .card-text {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
