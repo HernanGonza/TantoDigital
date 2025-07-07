@@ -49,7 +49,7 @@ body {
 /* button styling */
 .button {
   --border-right: 6px;
-  --text-stroke-color: rgba(255,255,255,0.6);
+  --text-stroke-color: rgba(255, 255, 255, 0.6);
   --animation-color: #41c0f0;
   --fs-size: 2em;
   letter-spacing: 3px;
@@ -77,7 +77,7 @@ body {
 /* hover */
 .button:hover .hover-text {
   width: 100%;
-  filter: drop-shadow(0 0 23px var(--animation-color))
+  filter: drop-shadow(0 0 23px var(--animation-color));
 }
 
 /* Estilos para el modal */
@@ -92,14 +92,14 @@ body {
 .glow-input {
   background-color: #000d3a;
   color: white !important;
-  border: 1px solid rgb(0,140,255);
-  box-shadow: 0 0 10px rgba(0,140,255, 0.5);
+  border: 1px solid rgb(0, 140, 255);
+  box-shadow: 0 0 10px rgba(0, 140, 255, 0.5);
 }
 
 .glow-input:focus {
   background-color: #000f45;
-  border-color: rgb(0,140,255);
-  box-shadow: 0 0 15px rgb(0,140,255);
+  border-color: rgb(0, 140, 255);
+  box-shadow: 0 0 15px rgb(0, 140, 255);
   color: white !important;
 }
 
@@ -120,17 +120,15 @@ body {
   text-transform: uppercase;
   transition: 0.5s;
   transition-property: box-shadow;
-  background: rgb(0,140,255);
-  box-shadow: 0 0 25px rgb(0,140,255);
+  background: rgb(0, 140, 255);
+  box-shadow: 0 0 25px rgb(0, 140, 255);
   width: 100%;
   margin-top: 1rem;
 }
 
 .shadow__btn-submit:hover {
-  box-shadow: 0 0 5px rgb(0,140,255),
-              0 0 25px rgb(0,140,255),
-              0 0 50px rgb(0,140,255),
-              0 0 100px rgb(0,140,255);
+  box-shadow: 0 0 5px rgb(0, 140, 255), 0 0 25px rgb(0, 140, 255),
+    0 0 50px rgb(0, 140, 255), 0 0 100px rgb(0, 140, 255);
 }
 
 /* LOADER OVERLAY */
@@ -165,21 +163,31 @@ body {
 .loader::before {
   box-shadow: 26px 0;
   transform: translateX(-26px);
-  animation: l9-1 .75s infinite linear alternate;
+  animation: l9-1 0.75s infinite linear alternate;
 }
 .loader::after {
   transform: translateX(13px) rotate(0deg) translateX(13px);
-  animation: l9-2 .75s infinite linear alternate;
+  animation: l9-2 0.75s infinite linear alternate;
 }
 @keyframes l9-0 {
-  0%, 49.9% { transform: scale(1); }
-  50%, 100% { transform: scale(-1); }
+  0%,
+  49.9% {
+    transform: scale(1);
+  }
+  50%,
+  100% {
+    transform: scale(-1);
+  }
 }
 @keyframes l9-1 {
-  100% { box-shadow: 52px 0; }
+  100% {
+    box-shadow: 52px 0;
+  }
 }
 @keyframes l9-2 {
-  100% { transform: translateX(13px) rotate(-180deg) translateX(13px); }
+  100% {
+    transform: translateX(13px) rotate(-180deg) translateX(13px);
+  }
 }
 
 /* MEDIA QUERY para pantallas chicas */
@@ -229,12 +237,12 @@ body {
   cursor: pointer;
   text-align: center;
   color: #fff;
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   transition: all 0.3s ease-in-out;
 }
 
 .card-custom::before {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   left: -4px;
@@ -296,9 +304,58 @@ body {
   .card-custom {
     width: 90%;
     max-width: 280px;
-    height: auto;
+    /* Fijamos una altura específica para móvil para evitar el ruido */
+    height: 180px; /* Ajusta esta altura según sea necesario */
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Centra el contenido verticalmente */
+    align-items: center; /* Centra el contenido horizontalmente */
+    padding: 10px; /* Ajusta el padding si es necesario */
+  }
+
+  /* Desactivar el hover del ::before en móvil */
+  .card-custom:hover::before {
+    transform: none; /* Elimina la transformación que causa el cambio de tamaño */
+  }
+
+  /* Icono visible siempre en móvil, centrado */
+  .icon-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; /* Ocupa todo el ancho disponible */
+    height: 48px; /* Altura fija para el contenedor del ícono */
+    margin-bottom: 5px; /* Espacio entre ícono y texto */
+  }
+
+  /* Aseguramos que la imagen del icono no exceda su contenedor */
+  .icon-wrapper img {
+    width: 40px; /* Ajusta el tamaño del ícono si es necesario */
+    height: 40px;
+    object-fit: contain;
+  }
+
+  /* Texto visible siempre en móvil, centrado */
+  .card-text {
+    opacity: 1; /* Hace el texto visible */
+    transform: translateY(0); /* Resetea cualquier transformación */
+    pointer-events: auto; /* Permite interacciones con el texto */
+    text-align: center;
+    flex-grow: 1; /* Permite que el texto ocupe el espacio restante */
+    display: flex; /* Añadimos flex para alinear el texto interno */
+    flex-direction: column;
+    justify-content: center; /* Centra el texto verticalmente */
+  }
+
+  /* Eliminamos cualquier comportamiento de hover que oculte/muestre elementos */
+  .card-custom:hover .icon-wrapper,
+  .card-custom:hover .card-text {
+    display: flex; /* Asegura que ambos sigan visibles */
+    opacity: 1;
+    transform: translateY(0);
   }
 }
+
 /* Icono centrado y visible siempre */
 .icon-wrapper {
   display: flex;
@@ -323,6 +380,7 @@ body {
 }
 
 /* Al hacer hover, oculta el ícono y muestra el texto */
+/* Estas reglas SÓLO aplican para la versión de escritorio */
 .card-custom:hover .icon-wrapper {
   display: none;
 }
@@ -360,8 +418,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-    filter: brightness(0) saturate(100%) invert(73%) sepia(72%) saturate(374%) hue-rotate(169deg) brightness(95%) contrast(92%);
-
+  filter: brightness(0) saturate(100%) invert(73%) sepia(72%) saturate(374%)
+    hue-rotate(169deg) brightness(95%) contrast(92%);
 }
 
 .social-sidebar:hover {
