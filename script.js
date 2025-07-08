@@ -53,4 +53,40 @@ document.addEventListener('DOMContentLoaded', () => {
       submitBtn.textContent = 'Enviar';
     }
   });
+
+  // --- CÓDIGO PARA EL CURSOR PERSONALIZADO ---
+  // Detecta si el dispositivo es táctil
+  const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+
+  // Solo ejecuta el código del cursor si NO es un dispositivo táctil
+  if (!isTouchDevice) {
+    const cursor = document.querySelector('.cursor');
+
+    // Verifica que el elemento del cursor exista antes de añadir event listeners
+    if (cursor) {
+      document.addEventListener('mousemove', (e) => {
+        cursor.style.left = `${e.pageX}px`;
+        cursor.style.top = `${e.pageY}px`;
+        cursor.style.transform = 'scale(1.5)'; // Scale up on movement
+
+        // Reset the scale after a short delay
+        clearTimeout(cursor.timer); // Clear any previous timer
+        cursor.timer = setTimeout(() => {
+          cursor.style.transform = 'scale(1)'; // Return to original size
+        }, 100); // Adjust delay to control how long it stays large
+      });
+
+      // Opcional: para que el cursor desaparezca si el ratón sale de la ventana
+      document.addEventListener('mouseleave', () => {
+        cursor.style.opacity = '0';
+      });
+
+      // Opcional: para que el cursor reaparezca si el ratón entra en la ventana
+      document.addEventListener('mouseenter', () => {
+        cursor.style.opacity = '1';
+      });
+    }
+  }
+  // --- FIN CÓDIGO CURSOR PERSONALIZADO ---
+
 });

@@ -1,9 +1,11 @@
+/* --- ESTILOS BASE --- */
 body {
   background-color: #160a4e;
   background-image: url("Recuros_graficos/TD_Trama.jpg");
   background-size: cover;
   padding: 2rem;
   color: white;
+  /* El cursor del sistema se ocultará para escritorio en la media query del final */
 }
 
 /* LOGO responsive centrado */
@@ -26,7 +28,7 @@ body {
   padding-bottom: 10px;
 }
 
-/* Botón "Habla con nosotros" */
+/* --- ESTILOS DEL BOTÓN "CONTACTANOS" --- */
 .button {
   margin: 0;
   height: auto;
@@ -43,7 +45,7 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
   transition: color 0.3s ease;
-  cursor: pointer;
+  /* El cursor de la manito se manejará con el cursor personalizado en la sección del cursor */
 }
 
 /* button styling */
@@ -80,7 +82,7 @@ body {
   filter: drop-shadow(0 0 23px var(--animation-color));
 }
 
-/* Estilos para el modal */
+/* --- ESTILOS DEL MODAL --- */
 .modal-content {
   background-color: #000c33;
   color: #fff;
@@ -131,7 +133,7 @@ body {
     0 0 50px rgb(0, 140, 255), 0 0 100px rgb(0, 140, 255);
 }
 
-/* LOADER OVERLAY */
+/* --- LOADER OVERLAY --- */
 .loader-overlay {
   position: absolute;
   top: 0;
@@ -190,29 +192,7 @@ body {
   }
 }
 
-/* MEDIA QUERY para pantallas chicas */
-@media (max-width: 576px) {
-  body {
-    padding: 1rem;
-    text-align: center;
-  }
-
-  .shadow__btn {
-    font-size: 15px;
-    letter-spacing: 2px;
-    padding: 8px 16px;
-  }
-
-  .construction-text {
-    font-size: 1rem;
-  }
-
-  .logo {
-    max-width: 100%;
-  }
-}
-
-/* Contenedor de tarjetas en fila */
+/* --- CONTENEDOR DE TARJETAS --- */
 .card-row {
   display: flex;
   justify-content: center;
@@ -222,21 +202,19 @@ body {
   margin-top: 2rem;
 }
 
-/* Tarjeta individual */
+/* Tarjeta individual (Estilos base y de escritorio) */
 .card-custom {
   position: relative;
   width: 180px;
   height: 220px;
   background-color: #000c33;
-  /* Eliminamos justify-content y align-items para el contenedor principal */
   padding: 14px;
   border-radius: 10px;
-  cursor: pointer;
+  /* El cursor de la manito se manejará con el cursor personalizado en la sección del cursor */
   text-align: center;
   color: #fff;
   font-family: "Arial", sans-serif;
   transition: all 0.3s ease-in-out;
-  /* NO poner overflow: hidden; aquí si queremos que los pseudo-elementos se muestren fuera */
 }
 
 .card-custom::before {
@@ -291,123 +269,60 @@ body {
   color: #41c0f0;
 }
 
-/*
-* ESTILOS PARA LAS TARJETAS (ICONO Y TEXTO)
-*/
-
-/* Contenedor del icono */
+/* Estilos de ícono y texto para escritorio (con hover) */
 .icon-wrapper {
-  position: absolute; /* Posicionamiento absoluto para superponer */
-  top: 50%; /* Centrar verticalmente */
-  left: 50%; /* Centrar horizontalmente */
-  transform: translate(-50%, -50%); /* Ajustar para centrado exacto */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%; /* Ocupa todo el ancho disponible */
-  height: 100%; /* Ocupa toda la altura disponible */
-  transition: opacity 0.4s ease, transform 0.4s ease; /* Transición para la animación */
-  z-index: 2; /* Aseguramos que esté por encima del texto */
-  pointer-events: none; /* Asegura que el clic en la tarjeta pase a los elementos debajo si no está el ícono */
+  width: 100%;
+  height: 100%;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 2;
+  pointer-events: none; /* Icono NO debe ser interactuable en hover */
 }
 
 .icon-wrapper img {
-  width: 80px; /* Tamaño más grande para el icono */
+  width: 80px;
   height: 80px;
   object-fit: contain;
   filter: brightness(0) saturate(100%) invert(73%) sepia(72%) saturate(374%)
-    hue-rotate(169deg) brightness(95%) contrast(92%); /* Mantenemos el color azulado */
+    hue-rotate(169deg) brightness(95%) contrast(92%);
 }
 
-/* Texto de la tarjeta */
 .card-text {
-  position: absolute; /* Posicionamiento absoluto para superponer */
-  top: 50%; /* Centrar verticalmente */
-  left: 50%; /* Centrar horizontalmente */
-  transform: translate(-50%, -50%); /* Ajustar para centrado exacto */
-  opacity: 0; /* Oculto por defecto */
-  transition: opacity 0.4s ease, transform 0.4s ease; /* Transición para la animación */
-  z-index: 1; /* Aseguramos que esté por debajo del icono */
-  padding: 10px; /* Añadir padding para que el texto no toque los bordes */
-  width: 100%; /* Ocupa todo el ancho */
-  display: flex; /* Para centrar el contenido del texto */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0; /* Oculto por defecto en escritorio */
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 1;
+  padding: 10px;
+  width: 100%;
+  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  pointer-events: none; /* Texto NO debe ser interactuable hasta el hover */
 }
 
 /* Al hacer hover en la tarjeta, oculta el icono y muestra el texto */
 .card-custom:hover .icon-wrapper {
-  opacity: 0; /* Desvanece el icono */
-  transform: translate(-50%, -50%) scale(0.8); /* Pequeña escala para el efecto de desaparición */
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0.8);
 }
 
 .card-custom:hover .card-text {
-  opacity: 1; /* Muestra el texto */
-  transform: translate(-50%, -50%) scale(1); /* Asegura que el texto esté a escala normal */
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto; /* Texto SÍ debe ser interactuable al hacer hover */
 }
 
-/* MEDIA QUERY para pantallas chicas */
-@media (max-width: 768px) {
-  .card-row {
-    flex-direction: column;
-    align-items: center;
-    gap: 1.5rem;
-  }
-
-  .card-custom {
-    width: 90%;
-    max-width: 280px;
-    height: 180px;
-    /* En móvil, el ícono y el texto siempre deben ser visibles y bien posicionados */
-    /* Eliminamos display: flex, justify-content, align-items, padding aquí para evitar conflictos */
-  }
-
-  /* Desactivar el hover del ::before en móvil */
-  .card-custom:hover::before {
-    transform: none;
-  }
-
-  /* En móvil, el ícono siempre visible y centrado */
-  .icon-wrapper {
-    position: relative; /* Vuelve a posicionamiento relativo en móvil */
-    top: auto;
-    left: auto;
-    transform: none; /* Elimina la transformación de centrado absoluto */
-    opacity: 1; /* Siempre visible */
-    margin-bottom: 5px; /* Espacio entre ícono y texto */
-    pointer-events: auto; /* Permite interacciones en móvil */
-    height: auto; /* Altura automática para el contenido */
-  }
-
-  .icon-wrapper img {
-    width: 50px; /* Ajusta el tamaño del ícono en móvil si es necesario */
-    height: 50px;
-  }
-
-  /* En móvil, el texto siempre visible y centrado */
-  .card-text {
-    position: relative; /* Vuelve a posicionamiento relativo en móvil */
-    top: auto;
-    left: auto;
-    transform: none; /* Elimina la transformación de centrado absoluto */
-    opacity: 1; /* Siempre visible */
-    pointer-events: auto;
-    text-align: center;
-    padding: 0; /* Elimina padding adicional si no es necesario */
-    width: auto; /* Ancho automático para el contenido */
-    display: block; /* Vuelve a block para un flujo normal del texto */
-  }
-
-  /* Eliminar efectos de hover para ícono y texto en móvil */
-  .card-custom:hover .icon-wrapper,
-  .card-custom:hover .card-text {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-/* Barra lateral de redes sociales */
+/* --- BARRA LATERAL DE REDES SOCIALES --- */
 .social-sidebar {
   position: fixed;
   top: 40%;
@@ -428,6 +343,7 @@ body {
   width: 40px;
   height: 40px;
   transition: transform 0.3s ease;
+  /* El cursor de la manito se manejará con el cursor personalizado en la sección del cursor */
 }
 
 .social-sidebar img {
@@ -450,5 +366,185 @@ body {
   to {
     left: 10px;
     opacity: 1;
+  }
+}
+
+/* --- MEDIA QUERIES --- */
+
+/* Para pantallas pequeñas (hasta 576px, afectando también al cursor) */
+@media (max-width: 576px) {
+  body {
+    padding: 1rem;
+    text-align: center;
+    cursor: default; /* Asegurarse de que el cursor sea el predeterminado en móviles */
+  }
+
+  .shadow__btn {
+    font-size: 15px;
+    letter-spacing: 2px;
+    padding: 8px 16px;
+  }
+
+  .construction-text {
+    font-size: 1rem;
+  }
+
+  .logo {
+    max-width: 100%;
+  }
+
+  /* Ocultar el cursor personalizado en dispositivos móviles */
+  .cursor {
+    display: none !important;
+  }
+}
+
+/* Para pantallas medianas y chicas (hasta 768px - Estilos de tarjeta para móvil) */
+@media (max-width: 768px) {
+  .card-row {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .card-custom {
+    width: 90%;
+    max-width: 280px;
+    height: 180px;
+    /* En móvil, los hijos no necesitan posicionamiento absoluto */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+  }
+
+  /* Desactivar el hover del ::before en móvil */
+  .card-custom:hover::before {
+    transform: none;
+  }
+
+  /* En móvil, el ícono siempre visible y centrado */
+  .icon-wrapper {
+    position: static; /* Importante: Vuelve a posicionamiento normal */
+    transform: none; /* Eliminar transformaciones */
+    opacity: 1; /* Siempre visible */
+    margin-bottom: 5px; /* Espacio entre ícono y texto */
+    pointer-events: auto; /* Permitir interacción en móvil */
+    height: auto;
+    width: auto;
+  }
+
+  .icon-wrapper img {
+    width: 50px;
+    height: 50px;
+  }
+
+  /* En móvil, el texto siempre visible y centrado */
+  .card-text {
+    position: static; /* Importante: Vuelve a posicionamiento normal */
+    transform: none; /* Eliminar transformaciones */
+    opacity: 1; /* Siempre visible */
+    pointer-events: auto; /* Permitir interacción en móvil */
+    text-align: center;
+    padding: 0;
+    width: auto;
+    display: block; /* Vuelve a block para flujo normal, o flex si necesitas control de alineación */
+  }
+
+  /* Eliminar efectos de hover para ícono y texto en móvil */
+  .card-custom:hover .icon-wrapper,
+  .card-custom:hover .card-text {
+    opacity: 1;
+    transform: none;
+    pointer-events: auto;
+  }
+}
+
+
+/* --- ESTILOS DEL CURSOR PERSONALIZADO --- */
+/* Oculta el cursor predeterminado y aplica el cursor personalizado SOLO para pantallas de escritorio */
+@media (min-width: 769px) {
+  body {
+    cursor: none; /* Oculta el cursor predeterminado del sistema en escritorio */
+  }
+
+  /* Evita que los elementos interactuables muestren la "manito" del cursor por defecto */
+  a,
+  button,
+  .card-custom,
+  [data-bs-toggle="modal"] {
+    cursor: none !important;
+  }
+}
+
+.cursor {
+  position: fixed; /* Mantiene el cursor en la ventana de visualización al hacer scroll */
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(0, 255, 255, 0.5);
+  border-radius: 50%;
+  pointer-events: none; /* Crucial: permite que los clics pasen a los elementos subyacentes */
+  transition: transform 0.15s ease-out;
+  background: rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 15px rgba(0, 255, 255, 0.5),
+              0 0 30px rgba(0, 255, 255, 0.3),
+              0 0 45px rgba(0, 255, 255, 0.2);
+  animation: cursorGlow 1.5s infinite ease-in-out;
+  z-index: 9999; /* Asegura que el cursor esté por encima de todo lo demás */
+}
+
+.cursor-dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  background-color: rgba(0, 255, 255, 0.8);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 8px rgba(0, 255, 255, 0.8);
+}
+
+/* Estas clases (`.glow-text`) no están en tu HTML, pero se incluyen por si decides usarlas en el futuro. */
+/* No causarán ningún problema al estar aquí aunque no se utilicen. */
+.glow-text {
+  font-size: 3rem;
+  color: rgba(0, 255, 255, 0.8);
+  text-align: center;
+}
+.glow-text:hover {
+  text-shadow: 0 0 5px rgba(0, 255, 255, 0.6),
+               0 0 10px rgba(0, 255, 255, 0.5),
+               0 0 20px rgba(0, 255, 255, 0.4),
+               0 0 30px rgba(0, 255, 255, 0.3);
+  animation: textGlow 2s infinite alternate;
+}
+
+/* Animación de brillo para el texto (`.glow-text`) */
+@keyframes textGlow {
+  from {
+    text-shadow: 0 0 10px rgba(0, 255, 255, 0.5),
+                 0 0 20px rgba(0, 255, 255, 0.4),
+                 0 0 30px rgba(0, 255, 255, 0.3);
+  }
+  to {
+    text-shadow: 0 0 15px rgba(0, 255, 255, 0.7),
+                 0 0 25px rgba(0, 255, 255, 0.5),
+                 0 0 35px rgba(0, 255, 255, 0.4);
+  }
+}
+
+/* Animación de brillo pulsante para el cursor personalizado */
+@keyframes cursorGlow {
+  0%, 100% {
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5),
+                0 0 30px rgba(0, 255, 255, 0.3),
+                0 0 45px rgba(0, 255, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.6),
+                0 0 35px rgba(0, 255, 255, 0.4),
+                0 0 50px rgba(0, 255, 255, 0.3);
   }
 }
